@@ -1,5 +1,5 @@
 # Wildfire-Watch
-A scalable forest fire detection framework written in python.
+A scalable forest fire detection framework written in Python.
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
