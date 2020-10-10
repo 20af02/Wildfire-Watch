@@ -9,7 +9,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"ServiceAccountToken.json"
 client = vision.ImageAnnotatorClient()
 
 flags.DEFINE_string('video', './video/WF.mp4', 'path to input video, set to 0 for webcam')
-flags.DEFINE_integer('capRate', 150, 'every amount of frames to send an API call')
+flags.DEFINE_integer('capRate', 100, 'every amount of frames to send an API call')
 flags.DEFINE_boolean('info', True, 'print info on detections')
 flags.DEFINE_boolean('output', True, 'write image detections')
 flags.DEFINE_boolean('Display', True, 'Display individual frames')
@@ -56,10 +56,12 @@ def main(_argv):
                 #If a wildfire is detected
                 if label.description == "Wildfire":
                     if label.score > 0.60:
+  #                      geoData['latitude'] = 28.117929
+  #                      geoData['longitude'] = -80.672204
                         if FLAGS.info:
                             print("Fire Detected on frame# " + str(frameNum) + "\nScore: " + str(label.score) + "\n@ " + str(geoData['latitude']) +', '+ str(geoData['longitude']) + "\n")
                         if FLAGS.output:
-                            cv2.imwrite('./detections/frame_' + str(frameNum) +'_'+str(geoData['latitude']) +', '+ str(geoData['longitude']) + ".png", frame)
+                            cv2.imwrite('./detections/frame_' + str(frameNum) +'_'+str(geoData['latitude']) +'_'+ str(geoData['longitude']) + ".png", frame)
         
             if response.error.message:
                 raise Exception(
