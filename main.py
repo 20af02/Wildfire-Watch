@@ -1,24 +1,38 @@
 import os, io, cv2, requests
 from google.cloud import vision
-#from google.cloud.vision import types
-from absl import app
+from absl import app, flags
+from absl.flags import FLAGS
 import numpy as np
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"ServiceAccountToken.json"
 
 client = vision.ImageAnnotatorClient()
 
+flags.DEFINE_string('video', './video/WF.mp4', 'path to input video, set to 0 for webcam')
+flags.DEFINE_integer('capRate', 150, 'every amount of frames to send an API call')
+flags.DEFINE_boolean('info', True, 'print info on detections')
+flags.DEFINE_boolean('output', True, 'write image detections')
+flags.DEFINE_boolean('Display', True, 'Display individual frames')
+
+
 def main(_argv):
-    cap = cv2.VideoCapture('video/WF.mp4')
+    cap = cv2.VideoCapture(FLAGS.video)
 
     frameNum = 0
-    capRate = 100
     #Main capture loop
     while True:
         #Get frame
         ret, frame = cap.read()
+
+        if not ret:
+            print('Video has ended or failed')
+            break
+
+        cv2.namedWindow("Current Frame", cv2.WINDOW_AUTOSIZE)
+        cv2.imshow("Current Frame", frame)
+
         #every 150 frames
-        if frameNum % capRate == 0:
+        if frameNum % FLAGS.capRate == 0:
 
             #Get geolocation
             ipRequest = requests.get('https://get.geojs.io/v1/ip.json')
@@ -28,7 +42,7 @@ def main(_argv):
             #store capture
             cv2.imwrite('./tmp.png', frame)
 
-            #Use Vision API
+            #Use Vision API to get predictions
             with io.open('./tmp.png', 'rb') as imageFile:
                 content = imageFile.read()
             image = vision.Image(content=content)
@@ -37,24 +51,23 @@ def main(_argv):
             response = client.label_detection(image=image)
             lables  = response.label_annotations
 
-           # print('Lables:')
+           # Find wildfires
             for label in lables:
                 #If a wildfire is detected
                 if label.description == "Wildfire":
                     if label.score > 0.60:
-                        vertices = ([(vertex.x, vertex.y)
-                                    for vertex in label.bounding_poly.vertices])
-
-                        print("Fire Detected on frame# " + str(frameNum) + "\nScore: " + str(label.score) + "\n@ " + str(geoData['latitude']) +', '+ str(geoData['longitude']) + "\n")
-                        cv2.imwrite('./detections/frame_' + str(frameNum) +'_'+str(geoData['latitude']) +', '+ str(geoData['longitude']) + ".png", frame)
+                        if FLAGS.info:
+                            print("Fire Detected on frame# " + str(frameNum) + "\nScore: " + str(label.score) + "\n@ " + str(geoData['latitude']) +', '+ str(geoData['longitude']) + "\n")
+                        if FLAGS.output:
+                            cv2.imwrite('./detections/frame_' + str(frameNum) +'_'+str(geoData['latitude']) +', '+ str(geoData['longitude']) + ".png", frame)
         
             if response.error.message:
                 raise Exception(
                     '{}\nFor more info on error messages, check: '
                     'https://cloud.google.com/apis/design/errors'.format(
                         response.error.message))
-      
-        frameNum  = frameNum +1
+        if cv2.waitKey(1) & 0xFF == ord('q'): break
+        frameNum  += 1
 
 if __name__ == '__main__':
     try:
