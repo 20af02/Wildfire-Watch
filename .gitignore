@@ -26,6 +26,16 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+*.DS_Store
+*.sfdx
+*.project
+*.salesforce
+*.settings
+*node_modules
+*.idea
+*.vscode
+*.png
+*.mp4
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
