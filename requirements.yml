@@ -8,5 +8,6 @@ dependencies:
   - pip:
     - opencv-python
     - pillow
+    - absl-py
     - google-cloud-vision
     

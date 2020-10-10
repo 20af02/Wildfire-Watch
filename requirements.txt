@@ -1,0 +1,6 @@
+  
+opencv-python
+absl-py
+matplotlib
+pillow
+google-cloud-vision
