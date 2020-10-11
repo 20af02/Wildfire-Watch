@@ -53,4 +53,4 @@ All object identification uses Google Cloud's VISION API. The pipeline can be ex
 # Sample pipeline
 To get started, specify a camera input using the flags in `main.py`, then run the excecutible using `python ./main.py`. You can view the frames determined to contain wildfires in them in the detections folder.
 
-Wildfire-Watch is Open Source. You can find the code on [GitHub repo](https://github.com/20af02/Wildfire-Watch/).
+Wildfire-Watch is Open Source. You can find the code on our [GitHub repository](https://github.com/20af02/Wildfire-Watch/).
