@@ -25,6 +25,8 @@ info - determines if detection information will be logged to the console
 output - determines if forest fire detections will be saved as individual images
 Display - determines if each analyzed frame is displayed, for debugging purposes
 ```
+### Input
+An input video must be supplied for Wildfire Watch to analyze. Every 100 frames of the video will be run through Google Cloud VISION to search for wildfires. The pipeline can be exported across multiple systems with minimal changes. 
 
 ### Output
 You can find the output detection(s) of forest fires in the detections folder.
@@ -36,9 +38,6 @@ where FRAMENUMBER is the current frame number. LATITUDE and LONGITUDE denote the
 
 ## Resulting Images
 You can find the outputted detection image(s) in the detections folder.
-
-### Result Video
-The pipeline is run on live video and can be exported across multiple platforms with minimal changes.
 
 #### Wildfire Detected
 <p align="center"><img src="WFgif.gif"\></p>
