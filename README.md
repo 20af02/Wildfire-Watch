@@ -37,7 +37,7 @@ where FRAMENUMBER is the current frame number. LATITUDE and LONGITUDE denote the
 You can find the outputted detection image(s) in the detections folder.
 
 ### Result Video
-The pipeline is run on live video. The framework can be exported across multiple platforms efficiently, with minimal changes.
+The pipeline is run on live video and can be exported across multiple platforms with minimal changes.
 
 #### Wildfire Detected
 <p align="center"><img src="WFgif.gif"\></p>
