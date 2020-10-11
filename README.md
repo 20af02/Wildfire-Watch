@@ -4,13 +4,14 @@ A scalable forest fire detection framework, written in Python.
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
 
 ## Getting Started
-### Conda (Recommended)
+### Installation
+#### Conda (Recommended)
 ```bash
 cond env create -f requirements.yml
 conda activate WFW
 ```
 
-### Pip
+#### Pip
 ```bash
 pip install -r requirements.txt
 ```
