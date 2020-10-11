@@ -16,7 +16,7 @@ pip install -r requirements.txt
 ```
 
 ### Flags
-Wildfire-Watch has five flags a user can define listed as follows
+Wildfire-Watch has five flags a user can define, listed as follows:
 ```bash
 video - A path to an OpenCV video input, which is set to 0 for a local webcam
 capRate - Sets a capture rate. For every specified number of frames, a Google Vision API call will be made
@@ -26,11 +26,11 @@ Display - determines if each analyzed frame is displayed, for debugging purposes
 ```
 
 ### Output
-You can find the output detection(s) of forest fires showing detections in the detections folder.
+You can find the output detection(s) of forest fires in the detections folder.
 Each detection is formatted as follows: FRAMENUMBER_LATITUDE_LONGITUDE.png, where FRAMENUMBER is the current frame number. LATITUDE and LONGITUDE denote the latitude and longitude generated from an IP address.
 
 ## Resulting Images
-You can find the outputted detection image(s) in the detections folder
+You can find the outputted detection image(s) in the detections folder.
 
 ### Result Video
 The pipeline is run on live video, it can be exported across multiple platforms with minimal changes.
@@ -44,7 +44,7 @@ The pipeline is run on live video, it can be exported across multiple platforms 
 
 
 ## Developer Notes
-All object identification used Google Cloud's VISION API.
+All object identification uses Google Cloud's VISION API.
 
 # Sample pipeline
 To get started, specify a camera input using the flags in `main.py`, then run the excecutible using `python ./main.py`. You can view the predicted license plate frames in the `detections` folder.
