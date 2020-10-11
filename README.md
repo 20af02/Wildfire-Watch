@@ -26,7 +26,7 @@ output - determines if forest fire detections will be saved as individual images
 Display - determines if each analyzed frame is displayed, for debugging purposes
 ```
 ### Input
-An input video must be supplied for Wildfire Watch to analyze. Every 100 frames of the video will be run through Google Cloud VISION to search for wildfires. The pipeline can be exported across multiple systems with minimal changes. 
+An input video must be supplied for Wildfire Watch to analyze. Every 100 frames of the video will be run through Google Cloud VISION to search for wildfires.
 
 ### Output
 You can find the output detection(s) of forest fires in the detections folder.
@@ -48,7 +48,7 @@ You can find the outputted detection image(s) in the detections folder.
 
 
 ## Developer Notes
-All object identification uses Google Cloud's VISION API.
+All object identification uses Google Cloud's VISION API. The pipeline can be exported across multiple systems with minimal changes. 
 
 # Sample pipeline
 To get started, specify a camera input using the flags in `main.py`, then run the excecutible using `python ./main.py`. You can view the predicted license plate frames in the `detections` folder.
