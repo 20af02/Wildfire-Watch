@@ -29,7 +29,24 @@ Display - determines if each analyzed frame is displayed, for debugging purposes
 You can find the output detection(s) of forest fires showing detections in the detections folder.
 Each detection is formatted as follows: FRAMENUMBER_LATITUDE_LONGITUDE.png, where FRAMENUMBER is the current frame number. LATITUDE and LONGITUDE denote the latitude and longitude generated from an IP address.
 
-## Results
+## Resulting Images
+You can find the outputted detection image(s) in the detections folder
+
+### Result Video
+The pipeline is run on live video, it can be exported across multiple platforms with minimal changes.
+
+#### Wildfire Detected
+<p align="center"><img src="WFgif.gif"\></p>
+
+#### No Wildfire Detected
+<p align="center"><img src="noWFgif.gif"\></p>
+
+
 
 ## Developer Notes
 All object identification used Google Cloud's VISION API.
+
+# Sample pipeline
+To get started, specify a camera input using the flags in `main.py`, then run the excecutible using `python ./main.py`. You can view the predicted license plate frames in the `detections` folder.
+
+Wildfire-Watch is Open Source. You can find the code on [GitHub repo](https://github.com/20af02/Wildfire-Watch/).
