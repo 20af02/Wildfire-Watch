@@ -28,7 +28,9 @@ Display - determines if each analyzed frame is displayed, for debugging purposes
 ### Output
 You can find the output detection(s) of forest fires in the detections folder.
 Each detection is formatted as follows: 
+```bash
 FRAMENUMBER_LATITUDE_LONGITUDE.png 
+```
 where FRAMENUMBER is the current frame number. LATITUDE and LONGITUDE denote the latitude and longitude generated from an IP address.
 
 ## Resulting Images
