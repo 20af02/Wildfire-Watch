@@ -7,7 +7,7 @@ A scalable forest fire detection framework, written in Python.
 ### Installation
 #### Conda (Recommended)
 ```bash
-cond env create -f requirements.yml
+conda env create -f requirements.yml
 conda activate WFW
 ```
 
